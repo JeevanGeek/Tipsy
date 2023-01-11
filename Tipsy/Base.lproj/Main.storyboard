@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Calculate View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalculateViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T0M-56-42h">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,6 +44,9 @@
                                                         <state key="normal" title="0%">
                                                             <color key="titleColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rqF-dO-R7j"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7y6-Kf-yF0">
                                                         <rect key="frame" x="95.333333333333329" y="0.0" width="162.33333333333337" height="54"/>
@@ -55,6 +58,9 @@
                                                         <state key="normal" title="10%">
                                                             <color key="titleColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fsY-kD-iGI"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtR-dU-EKt">
                                                         <rect key="frame" x="257.66666666666669" y="0.0" width="95.333333333333314" height="54"/>
@@ -66,6 +72,9 @@
                                                         <state key="normal" title="20%">
                                                             <color key="titleColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tipChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PVd-Fs-tiO"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -94,13 +103,16 @@
                                                         <color key="textColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minimumValue="2" maximumValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="haq-5m-pqs">
+                                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minimumValue="2" maximumValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="haq-5m-pqs">
                                                         <rect key="frame" x="127" y="0.0" width="100" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="29" id="lc0-jW-BEi"/>
                                                             <constraint firstAttribute="width" constant="100" id="sc0-qS-1tJ"/>
                                                         </constraints>
                                                         <color key="tintColor" red="0.0" green="0.59227246050000004" blue="0.347086966" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="stepperValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="bgJ-bj-dwC"/>
+                                                        </connections>
                                                     </stepper>
                                                 </subviews>
                                             </stackView>
@@ -166,6 +178,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10f"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="calculate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="62d-Ul-fgA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ptx-Zl-eGc"/>
@@ -182,17 +197,25 @@
                             <constraint firstItem="EOv-ot-7Fq" firstAttribute="top" secondItem="C9X-5R-fQ6" secondAttribute="bottom" constant="40" id="vpj-kh-cbm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="billTextField" destination="wcN-ka-Q4F" id="JJs-7h-8ka"/>
+                        <outlet property="splitLabel" destination="bSy-Yc-886" id="NH4-0T-VzT"/>
+                        <outlet property="tenTipButton" destination="7y6-Kf-yF0" id="x6q-sl-iEB"/>
+                        <outlet property="twentyTipButton" destination="UtR-dU-EKt" id="cd8-9U-LmA"/>
+                        <outlet property="zeroTipButton" destination="XzR-0E-Xf7" id="hUd-yQ-dMj"/>
+                        <segue destination="abW-Iu-dF8" kind="presentation" identifier="goToResult" id="DKM-iY-G4I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="48" y="-2"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="JQj-Ud-2nk">
             <objects>
-                <viewController id="abW-Iu-dF8" sceneMemberID="viewController">
+                <viewController id="abW-Iu-dF8" customClass="ResultViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DNW-gk-FsX">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCe-Te-efL">
@@ -229,7 +252,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzn-9K-6hu">
-                                <rect key="frame" x="71.666666666666686" y="758" width="250" height="60"/>
+                                <rect key="frame" x="71.666666666666686" y="723" width="250" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="0Lh-eY-3GO"/>
@@ -242,6 +265,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10f"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="recalculate:" destination="abW-Iu-dF8" eventType="touchUpInside" id="aGR-hj-sHL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Split between 3 people, with 10% tip." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGt-bn-sCv">
                                 <rect key="frame" x="50" y="305" width="293" height="120"/>
@@ -266,6 +292,10 @@
                             <constraint firstItem="ZCe-Te-efL" firstAttribute="top" secondItem="DNW-gk-FsX" secondAttribute="top" id="zdY-59-9ry"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="settingLabel" destination="HGt-bn-sCv" id="fiX-k4-zQn"/>
+                        <outlet property="totalLabel" destination="uLJ-ii-hft" id="ukg-sN-f6P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1u-Ch-vFd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
